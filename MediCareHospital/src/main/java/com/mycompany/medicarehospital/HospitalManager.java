@@ -425,7 +425,87 @@ public class HospitalManager {
         return patients.size();
     }
 
+    public int getOccupiedBeds() {
+
+        int count = 0;
+
+        for (int row = 0;
+                row < beds.length;
+                row++) {
+
+            for (int col = 0;
+                    col < beds[row].length;
+                    col++) {
+
+                if (beds[row][col].contains(" - ")) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public int getAvailableBeds() {
+        return 20 - getOccupiedBeds();
+    }
+
+    public double getOccupancyPercentage() {
+
+        return (getOccupiedBeds() / 20.0) * 100;
+    }
+
+    public void displayWardReport() {
+
+        System.out.println();
+        System.out.println("========== WARD REPORT ==========");
+
+        System.out.println(
+                "Total registered patients: "
+                + getTotalPatients()
+        );
+
+        System.out.println(
+                "Occupied beds: "
+                + getOccupiedBeds()
+        );
+
+        System.out.println(
+                "Available beds: "
+                + getAvailableBeds()
+        );
+
+        System.out.printf(
+                "Occupancy percentage: %.2f%%%n",
+                getOccupancyPercentage()
+        );
+
+        System.out.println("=================================");
+    }
+
+
+    public void sortBySurname() {
+
+        patients.sort(
+                Comparator.comparing(
+                        Patient::getLastName,
+                        String.CASE_INSENSITIVE_ORDER
+                )
+        );
+    }
+
+    public void sortByPatientId() {
+
+        patients.sort(
+                Comparator.comparing(
+                        Patient::getPatientId,
+                        String.CASE_INSENSITIVE_ORDER
+                )
+        );
+    }
 }
+
+
 /***************************************************************************************
 ***************************************************************************************
 *Title: ArrayList in Java
@@ -469,5 +549,14 @@ public class HospitalManager {
 *Date:2026
 *Code version:
 *Availability:https://www.geeksforgeeks.org/java/system-out-println-in-java/
+***************************************************************************************
+***************************************************************************************/
+/***************************************************************************************
+***************************************************************************************
+*Title: sort() in C++ STL
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/cpp/sort-c-stl/
 ***************************************************************************************
 ***************************************************************************************/
