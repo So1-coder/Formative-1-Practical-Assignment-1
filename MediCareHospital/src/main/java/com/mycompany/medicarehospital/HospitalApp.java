@@ -140,7 +140,218 @@ public class HospitalApp {
         );
     }
 
-    
+    private static void registerPatient()
+            throws HospitalException {
+
+        System.out.println();
+        System.out.println(
+                "========== REGISTER PATIENT =========="
+        );
+
+        String id = readString(
+                "Patient ID: "
+        );
+
+        String firstName = readString(
+                "First Name: "
+        );
+
+        String lastName = readString(
+                "Last Name: "
+        );
+
+        int age = readInt(
+                "Age: "
+        );
+
+        String gender = readString(
+                "Gender: "
+        );
+
+        String condition = readString(
+                "Medical Condition: "
+        );
+
+        System.out.println();
+        System.out.println("Patient Category:");
+        System.out.println("1. Inpatient");
+        System.out.println("2. Outpatient");
+        System.out.println("3. Emergency");
+
+        int categoryChoice = readInt(
+                "Select category: "
+        );
+
+        Patient patient;
+
+        switch (categoryChoice) {
+
+            case 1:
+
+                patient = new Inpatient(
+                        id,
+                        firstName,
+                        lastName,
+                        age,
+                        gender,
+                        condition,
+                        "Ward 1",
+                        null
+                );
+
+                break;
+
+            case 2:
+
+                patient = new Patient(
+                        id,
+                        firstName,
+                        lastName,
+                        age,
+                        gender,
+                        condition,
+                        PatientCategory.OUTPATIENT
+                );
+
+                break;
+
+            case 3:
+
+                patient = new Patient(
+                        id,
+                        firstName,
+                        lastName,
+                        age,
+                        gender,
+                        condition,
+                        PatientCategory.EMERGENCY
+                );
+
+                break;
+
+            default:
+
+                System.out.println(
+                        "Invalid category."
+                );
+
+                return;
+        }
+
+        manager.registerPatient(patient);
+
+        System.out.println(
+                "Patient registered successfully!"
+        );
+    }
+
+    private static void searchPatient() {
+
+        String id = readString(
+                "Enter Patient ID: "
+        );
+
+        Patient patient =
+                manager.findPatient(id);
+
+        if (patient == null) {
+
+            System.out.println(
+                    "Patient not found."
+            );
+
+        } else {
+
+            patient.displayDetails();
+        }
+    }
+
+    private static void updatePatient()
+            throws HospitalException {
+
+        String id = readString(
+                "Enter Patient ID to update: "
+        );
+
+        Patient patient =
+                manager.findPatient(id);
+
+        if (patient == null) {
+
+            System.out.println(
+                    "Patient not found."
+            );
+
+            return;
+        }
+
+        System.out.println(
+                "Leave text blank to keep existing value."
+        );
+
+        String firstName = readString(
+                "First Name [" +
+                patient.getFirstName() + "]: "
+        );
+
+        String lastName = readString(
+                "Last Name [" +
+                patient.getLastName() + "]: "
+        );
+
+        String ageInput = readString(
+                "Age [" +
+                patient.getAge() + "]: "
+        );
+
+        String gender = readString(
+                "Gender [" +
+                patient.getGender() + "]: "
+        );
+
+        String condition = readString(
+                "Medical Condition [" +
+                patient.getMedicalCondition() + "]: "
+        );
+
+        if (firstName.isEmpty()) {
+            firstName = patient.getFirstName();
+        }
+
+        if (lastName.isEmpty()) {
+            lastName = patient.getLastName();
+        }
+
+        int age = patient.getAge();
+
+        if (!ageInput.isEmpty()) {
+            age = Integer.parseInt(ageInput);
+        }
+
+        if (gender.isEmpty()) {
+            gender = patient.getGender();
+        }
+
+        if (condition.isEmpty()) {
+            condition =
+                    patient.getMedicalCondition();
+        }
+
+        manager.updatePatient(
+                id,
+                firstName,
+                lastName,
+                age,
+                gender,
+                condition
+        );
+
+        System.out.println(
+                "Patient updated successfully!"
+        );
+    }
+
+ 
 }
 
 /***************************************************************************************
@@ -169,3 +380,12 @@ public class HospitalApp {
 ***************************************************************************************
 ***************************************************************************************
 */
+/***************************************************************************************
+***************************************************************************************
+*Title: If statement in Programming
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/dsa/if-statement-in-programming/
+***************************************************************************************
+***************************************************************************************/
