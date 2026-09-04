@@ -351,7 +351,123 @@ public class HospitalApp {
         );
     }
 
- 
+    private static void deletePatient()
+            throws HospitalException {
+
+        String id = readString(
+                "Enter Patient ID to delete: "
+        );
+
+        manager.deletePatient(id);
+
+        System.out.println(
+                "Patient deleted successfully!"
+        );
+    }
+
+    private static void allocateBed()
+            throws HospitalException {
+
+        String id = readString(
+                "Enter Inpatient ID: "
+        );
+
+        String bed = readString(
+                "Enter bed number (e.g. B01): "
+        );
+
+        manager.allocateBed(id, bed);
+
+        System.out.println(
+                "Bed allocated successfully!"
+        );
+    }
+
+    private static void releaseBed()
+            throws HospitalException {
+
+        String bed = readString(
+                "Enter bed number: "
+        );
+
+        manager.releaseBed(bed);
+
+        System.out.println(
+                "Bed released successfully!"
+        );
+    }
+
+    private static void sortPatients() {
+
+        System.out.println();
+        System.out.println(
+                "========== SORT PATIENTS =========="
+        );
+
+        System.out.println("1. Sort by surname");
+        System.out.println("2. Sort by Patient ID");
+
+        int choice = readInt(
+                "Enter choice: "
+        );
+
+        if (choice == 1) {
+
+            manager.sortBySurname();
+
+            System.out.println(
+                    "Patients sorted by surname."
+            );
+
+            manager.displayAllPatients();
+
+        } else if (choice == 2) {
+
+            manager.sortByPatientId();
+
+            System.out.println(
+                    "Patients sorted by Patient ID."
+            );
+
+            manager.displayAllPatients();
+
+        } else {
+
+            System.out.println(
+                    "Invalid choice."
+            );
+        }
+    }
+
+    private static String readString(
+            String message) {
+
+        System.out.print(message);
+
+        return scanner.nextLine().trim();
+    }
+
+    private static int readInt(
+            String message) {
+
+        while (true) {
+
+            try {
+
+                System.out.print(message);
+
+                return Integer.parseInt(
+                        scanner.nextLine().trim()
+                );
+
+            } catch (NumberFormatException e) {
+
+                System.out.println(
+                        "Please enter a valid number."
+                );
+            }
+        }
+    }
 }
 
 /***************************************************************************************
@@ -387,5 +503,14 @@ public class HospitalApp {
 *Date:2026
 *Code version:
 *Availability:https://www.geeksforgeeks.org/dsa/if-statement-in-programming/
+***************************************************************************************
+***************************************************************************************/
+/***************************************************************************************
+***************************************************************************************
+*Title: sort() in C++ STL
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/cpp/sort-c-stl/
 ***************************************************************************************
 ***************************************************************************************/
