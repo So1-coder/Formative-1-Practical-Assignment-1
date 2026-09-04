@@ -36,7 +36,62 @@ public class HospitalManager {
         }
     }
 
+    public void registerPatient(Patient patient)
+            throws HospitalException {
+
+        if (patient == null) {
+            throw new HospitalException("Patient cannot be null.");
+        }
+
+        if (findPatient(patient.getPatientId()) != null) {
+            throw new HospitalException(
+                    "Patient ID already exists."
+            );
+        }
+
+        patients.add(patient);
+    }
+
+    public Patient findPatient(String patientId) {
+
+        for (Patient patient : patients) {
+
+            if (patient.getPatientId()
+                    .equalsIgnoreCase(patientId)) {
+
+                return patient;
+            }
+        }
+
+        return null;
+    }
+
+    public void updatePatient(String patientId,
+                              String firstName,
+                              String lastName,
+                              int age,
+                              String gender,
+                              String medicalCondition)
+            throws HospitalException {
+
+        Patient patient = findPatient(patientId);
+
+        if (patient == null) {
+            throw new HospitalException(
+                    "Patient not found."
+            );
+        }
+
+        patient.setFirstName(firstName);
+        patient.setLastName(lastName);
+        patient.setAge(age);
+        patient.setGender(gender);
+        patient.setMedicalCondition(medicalCondition);
+    }
+
+
 }
+
 
 /***************************************************************************************
 ***************************************************************************************
@@ -45,5 +100,32 @@ public class HospitalManager {
 *Date:2026
 *Code version:
 *Availability:https://www.geeksforgeeks.org/java/arraylist-in-java/
+***************************************************************************************
+***************************************************************************************/
+/***************************************************************************************
+***************************************************************************************
+*Title: Java Constructors
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/java/constructors-in-java/
+***************************************************************************************
+***************************************************************************************/
+/***************************************************************************************
+***************************************************************************************
+*Title: Java Constructors
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/java/constructors-in-java/
+***************************************************************************************
+***************************************************************************************/
+/***************************************************************************************
+***************************************************************************************
+*Title: Getter and Setter in Java
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/java/getter-and-setter-in-java/
 ***************************************************************************************
 ***************************************************************************************/
