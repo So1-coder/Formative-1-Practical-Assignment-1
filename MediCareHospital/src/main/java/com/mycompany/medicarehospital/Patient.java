@@ -90,7 +90,27 @@ public class Patient {
     }
 
 
-    
+    public void displayDetails() {
+
+        System.out.println("----------------------------------------");
+        System.out.println("Patient ID: " + patientId);
+        System.out.println("Name: " + firstName + " " + lastName);
+        System.out.println("Age: " + age);
+        System.out.println("Gender: " + gender);
+        System.out.println("Medical Condition: " + medicalCondition);
+        System.out.println("Category: " + category);
+        System.out.println("----------------------------------------");
+    }
+
+    @Override
+    public String toString() {
+        return patientId + " | "
+                + firstName + " " + lastName + " | "
+                + age + " | "
+                + gender + " | "
+                + medicalCondition + " | "
+                + category;
+    }
 }
 
 /***************************************************************************************
@@ -109,5 +129,14 @@ public class Patient {
 *Date:2026
 *Code version:
 *Availability:https://www.geeksforgeeks.org/java/getter-and-setter-in-java/
+***************************************************************************************
+***************************************************************************************/
+/***************************************************************************************
+***************************************************************************************
+*Title: System.out.println in Java
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/java/system-out-println-in-java/
 ***************************************************************************************
 ***************************************************************************************/
