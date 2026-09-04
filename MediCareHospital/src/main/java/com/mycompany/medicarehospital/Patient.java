@@ -31,9 +31,67 @@ public class Patient {
         this.medicalCondition = medicalCondition;
         this.category = category;
     }
+
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getMedicalCondition() {
+        return medicalCondition;
+    }
+
+    public void setMedicalCondition(String medicalCondition) {
+        this.medicalCondition = medicalCondition;
+    }
+
+    public PatientCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(PatientCategory category) {
+        this.category = category;
+    }
+
+
+    
 }
-
-
 
 /***************************************************************************************
 ***************************************************************************************
@@ -42,5 +100,14 @@ public class Patient {
 *Date:2026
 *Code version:
 *Availability:https://www.geeksforgeeks.org/java/constructors-in-java/
+***************************************************************************************
+***************************************************************************************/
+/***************************************************************************************
+***************************************************************************************
+*Title: Getter and Setter in Java
+*Author:GeeksForGeeks
+*Date:2026
+*Code version:
+*Availability:https://www.geeksforgeeks.org/java/getter-and-setter-in-java/
 ***************************************************************************************
 ***************************************************************************************/
